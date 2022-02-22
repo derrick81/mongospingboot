@@ -79,6 +79,7 @@ public class AccountController {
         return accountTemplateRepo.getBalanceStatsByAccountType();
     }
 
+    // Used for demo setup
     @GetMapping("/accounts/setupdemo")
     Account[] setupDemoAccounts(){
         //Cleanup
