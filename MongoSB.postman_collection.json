@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "951fa66c-b295-4627-b37a-e89df61ef62f",
+		"name": "MongoSB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Native_AddAccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"SAVINGS\",\r\n    \"branchCode\": 100,\r\n    \"customer\": {\r\n        \"id\": \"123457\",\r\n        \"firstName\": \"Derrick\",\r\n        \"lastName\": \"Chua\"\r\n    },\r\n    \"balance\": 1000.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Native_AccountByAccountNo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/6211eb06d408227e9c32975b",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"6211eb06d408227e9c32975b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Native_UpdateBranchCode",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/6211eb06d408227e9c32975b/branchCode?currCode=100&newCode=99",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"6211eb06d408227e9c32975b",
+						"branchCode"
+					],
+					"query": [
+						{
+							"key": "currCode",
+							"value": "100"
+						},
+						{
+							"key": "newCode",
+							"value": "99"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Native_DeleteAccount",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/6211eb06d408227e9c32975b",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"6211eb06d408227e9c32975b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Native_TransactionById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transactions/62109f30d96699757a08e7e1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions",
+						"62109f30d96699757a08e7e1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pre_SetupDemoAccounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/setupdemo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"setupdemo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mixed_AddTransactionToHistory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"toAccountCustomerName\": \"John Doe\",\r\n    \"amount\": 1,\r\n    \"currency\": \"SGD\",\r\n    \"transactionDateTime\": \"2022-02-16T15:09:36.584Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/accounts/6211eb61d408227e9c32975c/transactionhistory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"6211eb61d408227e9c32975c",
+						"transactionhistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Template_AddNewTransaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fromAccount\": {\r\n        \"accountNo\": \"6211eb61d408227e9c32975c\"\r\n    },\r\n    \"toAccount\": {\r\n        \"accountNo\": \"6211eb61d408227e9c32975d\"\r\n    },\r\n    \"amount\": 1000,\r\n    \"currency\": \"SGD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/template/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"template",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pre_Populate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/populate?numAccts=100&numTxns=1000",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"populate"
+					],
+					"query": [
+						{
+							"key": "numAccts",
+							"value": "100"
+						},
+						{
+							"key": "numTxns",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Template_GetBalanceStats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/accounts/balancestats",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"balancestats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddNewTransaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fromAccount\": {\r\n        \"accountNo\": \"1000\"\r\n    },\r\n    \"toAccount\": {\r\n        \"accountNo\": \"1001\"\r\n    },\r\n    \"amount\": 1000,\r\n    \"currency\": \"SGD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DailyCurrencyTotal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/template/transactions/dailycurrencytotal",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"template",
+						"transactions",
+						"dailycurrencytotal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
